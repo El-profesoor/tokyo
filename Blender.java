@@ -11,7 +11,7 @@ private Color color;
 private double  ratioOfCalories;
 
    Blender(int capacity ){
-	   if (capacity<0) this.capacity=100; 
+	   if (capacity<0) this.capacity=50; 
 	   else  this.capacity=capacity; 
 	   this.volume=0; 
 	   this.calories=0; 
@@ -42,41 +42,59 @@ private double  ratioOfCalories;
 public void add(subIngredients ingredient) {
 	int freeCapacity= this.capacity-this.volume; 
 	 
-          try  {
-        	  if ( freeCapacity< ingredient.getVolume() ) {
-        		  String st="\n\n\n\n\n\n\neroooooooooooorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr\n\n\n\n\n\n\n";
-        		  System.out.print(st);
-        		  throw new Exception();
-        		 
-        		  
-        	  }
-        	  ingredients.add(ingredient);
-        	  this.color.mix(ingredient.getColor());
-        	  this.calories+=ingredient.getCalories();
-        	  this.volume-=ingredient.getVolume(); 
-        	  mix();
-        	  
-            
-              } 
-          catch (Exception e) {
-	           if (freeCapacity>this.volume) {
-	           String st = "\nIt has exceeded the allowed size. You must add a ingredient that is less or equal in size ( " +freeCapacity+")\n" ; 
-	           System.out.print(st);
-	           }
-	 
-	           else {		 
-		       System.out.print("\nyouer Blender full\n ");
-	                }
-           
-	} 
+//          try  {
+//        	  if ( freeCapacity< ingredient.getVolume() ) {
+//        		  String st="\n\n\n\n\n\n\neroooooooooooorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr\n\n\n\n\n\n\n";
+//        		  System.out.print(st);
+//        		  throw new Exception();
+//        		 
+//        		  
+//        	  }
+//        	  ingredients.add(ingredient);
+//        	  this.color.mix(ingredient.getColor());
+//        	  this.calories+=ingredient.getCalories();
+//        	  this.volume-=ingredient.getVolume(); 
+//        	  mix();
+//        	  
+//            
+//              } 
+//          catch (Exception e) {
+//	           if (freeCapacity>this.volume) {
+//	           String st = "\nIt has exceeded the allowed size. You must add a ingredient that is less or equal in size ( " +freeCapacity+")\n" ; 
+//	           System.out.print(st);
+//	           }
+//	 
+//	           else {		 
+//		       System.out.print("\nyouer Blender full\n ");
+//	                }
+//           
+//	} 
+	
+  
+  	  if ( freeCapacity< ingredient.getVolume() ) {
+  		  String st="\nthe volume of ingredient more than free volume of blender \n\n ";
+  		  System.out.print(st);
+}
+  	  else { 
+  	 // ingredients.add(ingredient);
+  	  this.color.mix(ingredient.getColor());
+  	  this.calories+=ingredient.getCalories();
+  	  this.volume+=ingredient.getVolume(); 
+  	  mix();
+  	  
+             
+}
+  	 
 }
 
 
 // getInfo like toString ----------------------------------------------------------------------------
 public String getInfo() {
 	String st = ""; 
-	st += "\nBlender:***********\nthe total amount of calories :" + calories;
+	
 	st+="\ncapacity:"+capacity;
+	st += "\nthe total amount of calories :" + calories;
+	
 	st += "\nthe volume is : " + volume+" \n";
 	st += "the color of Cocktails is : " + color.getInfo()+" \n";
 	
